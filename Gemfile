@@ -59,6 +59,9 @@ group :development, :test do
 
   #Prints Ruby objects
   gem 'awesome_print'
+
+  #Load variable from .env file
+  gem 'dotenv-rails'
 end
 
 group :development do
