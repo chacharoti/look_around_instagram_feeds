@@ -16,7 +16,26 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'httparty'
+
+class Instagram
+  include HTTParty
+  base_uri 'https://api.instagram.com'
+
+  def initialize(latitude, longitude, radius)
+    @options = { query: { lat: latitude, 
+                          lng: longitude, 
+                          distance: radius,
+                          access_token: ENV['INSTAGRAM_ACCESS_TOKEN'] } }
+  end
+
+  def media_search
+    self.class.get("/v1/media/search", @options)
+  end
+end
+
 RSpec.configure do |config|
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
