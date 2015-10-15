@@ -9,4 +9,9 @@ describe "Instagram" do
     response = look_around
     expect(response['meta']['code']).to eq(200)
   end
+
+  it "respone with list of news feeds" do
+    response = look_around
+    expect(response['data']).not_to be_empty
+  end
 end
