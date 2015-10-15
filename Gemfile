@@ -52,6 +52,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 
   gem 'capybara'
+
+  #suppost testing
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+
+  #Prints Ruby objects
+  gem 'awesome_print'
 end
 
 group :development do
