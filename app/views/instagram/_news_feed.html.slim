@@ -1,0 +1,21 @@
+.col-sm-12 
+  h4 = "Total feeds receive: #{ news_feeds.size }"
+- news_feeds.each do |news_feed|
+  - news_feed_image = news_feed['images']['low_resolution']['url'] 
+  - location_name = news_feed['location']['name']
+  - news_feed_url = news_feed['link']
+  - if news_feed['caption'].present?
+    - description = news_feed['caption']['text']
+  - author = news_feed['user']['username']
+  - place = news_feed['location']['name']
+
+  .col-sm-4
+    .thumbnail
+      = image_tag( news_feed_image )
+      .caption
+        h3 = location_name
+        p = truncate( description, length: 40 )
+        p 
+         i = truncate( "By: #{author}, at: #{place}", length: 40 )
+        p = link_to "View", news_feed_url, class: 'btn btn-primary'
+
