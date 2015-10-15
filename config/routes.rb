@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'application#home'
 
+  resources :instagram do
+    collection do
+      get 'look_around'
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
