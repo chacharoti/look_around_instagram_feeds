@@ -2,25 +2,38 @@
   .row
     .col-md-12
       h1 Look Around Instagram New Feeds
-    .form-group.col-md-4
-      label for="latitude-input" Latitude
-      input#latitude-input.form-control type="text" placeholder="Enter a latitude"
-    .form-group.col-md-4
-      label for="longitude-input" Longitude
-      input#longitude-input.form-control type="text" placeholder="Enter a longitude"
-    .form-group.col-md-4
-      label for="radius-input" Radius
-      input#radius-input.form-control type="number" placeholder="Enter radius" min="1" max="5000"
-    .form-group.col-md-12
-      = link_to 'Look Around',  look_around_instagram_index_path,
-                                :id => "look_around",
-                                :remote => true,
-                                :method => :get, 
-                                :class => 'btn btn-success'
+  .row
+    .col-md-6
+      #map
+    .col-md-6
+      .form-group.col-md-12
+        label for="latitude-input" Latitude
+        input#latitude-input.form-control type="text" placeholder="Enter a latitude"
+      .form-group.col-md-12
+        label for="longitude-input" Longitude
+        input#longitude-input.form-control type="text" placeholder="Enter a longitude"
+      .form-group.col-md-12
+        label for="radius-input" Radius
+        input#radius-input.form-control type="number" placeholder="Enter radius" value="1000" min="1" max="5000"
+      .form-group.col-md-12
+        = link_to 'Look Around',  look_around_instagram_index_path,
+                                  :id => "look_around",
+                                  :remote => true,
+                                  :method => :get, 
+                                  :class => 'btn btn-success'
   #instagram-news-feeds.row
   #error.row
                                     
 javascript:
+  function initMap() {
+    var myLatLng = {lat: 37.7749, lng: -122.4194};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: myLatLng
+    });
+  }
+
   $('a#look_around').on('click', function() {
     latitude_value = $('#latitude-input').val()
     longitude_value = $('#longitude-input').val()
