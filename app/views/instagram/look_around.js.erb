@@ -1,1 +1,5 @@
+var default_path = "<%= look_around_instagram_index_path %>"
+var look_around_path = document.getElementById('look_around')
+look_around_path.href = window.location.origin + default_path
+
 $("#instagram-news-feeds").html("<%= escape_javascript(render partial: 'instagram/news_feed', locals: { news_feeds: @news_feeds }) %>");
