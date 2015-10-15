@@ -10,12 +10,12 @@
   - place = news_feed['location']['name']
 
   .col-sm-4
-    .thumbnail
+    .news-feed-card.thumbnail
       = image_tag( news_feed_image )
       .caption
-        h3 = location_name
-        p = truncate( description, length: 40 )
-        p 
+        h3 = truncate( location_name, length: 20 )
+        p.news-feed-description = truncate( description, length: 40 )
+        p
          i = truncate( "By: #{author}, at: #{place}", length: 40 )
         p = link_to "View", news_feed_url, class: 'btn btn-primary'
 
