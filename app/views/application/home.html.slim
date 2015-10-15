@@ -32,6 +32,37 @@ javascript:
       zoom: 12,
       center: myLatLng
     });
+
+    var marker;
+
+    google.maps.event.addListener(map, 'click', function(e) {
+      if (marker) {
+        marker.setPosition(e.latLng);
+        update_lat_lng_value(e.latLng);
+      } else {
+        marker = new google.maps.Marker({
+            position: e.latLng,
+            map: map,
+            draggable:true
+        });
+
+        update_lat_lng_value(e.latLng);
+
+        google.maps.event.addListener(marker, 'dragend', function() {
+          update_lat_lng_value( marker.position );
+        });
+      }
+
+      map.panTo(marker.getPosition());
+    });
+  }
+
+  function update_lat_lng_value( position ){
+    marker_latitude = position.lat();
+    marker_longitude = position.lng();
+
+    $('#latitude-input').val( marker_latitude );
+    $('#longitude-input').val( marker_longitude );
   }
 
   $('a#look_around').on('click', function() {
