@@ -2,22 +2,26 @@
   .row
     .col-md-12
       h1 Look Around Instagram New Feeds
-      .form-group
-        label for="latitude-input" Latitude
-        input#latitude-input.form-control type="text" placeholder="Enter a latitude"
-      .form-group
-        label for="longitude-input" Longitude
-        input#longitude-input.form-control type="text" placeholder="Enter a longitude"
-      .form-group
-        = link_to 'Look Around',  look_around_instagram_index_path,
-                                  :id => "look_around",
-                                  :remote => true,
-                                  :method => :get, 
-                                  :class => 'btn btn-success'
+    .form-group.col-md-4
+      label for="latitude-input" Latitude
+      input#latitude-input.form-control type="text" placeholder="Enter a latitude"
+    .form-group.col-md-4
+      label for="longitude-input" Longitude
+      input#longitude-input.form-control type="text" placeholder="Enter a longitude"
+    .form-group.col-md-4
+      label for="radius-input" Radius
+      input#radius-input.form-control type="number" placeholder="Enter radius" min="1" max="5000"
+    .form-group.col-md-12
+      = link_to 'Look Around',  look_around_instagram_index_path,
+                                :id => "look_around",
+                                :remote => true,
+                                :method => :get, 
+                                :class => 'btn btn-success'
   #instagram-news-feeds.row
                                     
 javascript:
   $('a#look_around').on('click', function() {
     this.href = this.href + '?latitude=' + $('#latitude-input').val() + 
-                            '&longitude=' + $('#longitude-input').val()
+                            '&longitude=' + $('#longitude-input').val() +
+                            '&radius=' + $('#radius-input').val()
   });
