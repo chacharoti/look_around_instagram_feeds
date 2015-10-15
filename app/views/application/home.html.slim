@@ -9,4 +9,15 @@
         label for="longitude-input" Longitude
         input#longitude-input.form-control type="text" placeholder="Enter a longitude"
       .form-group
-        button.btn.btn-success type="button" Look Around
+        = link_to 'Look Around',  look_around_instagram_index_path,
+                                  :id => "look_around",
+                                  :remote => true,
+                                  :method => :get, 
+                                  :class => 'btn btn-success'
+  #instagram-news-feeds.row
+                                    
+javascript:
+  $('a#look_around').on('click', function() {
+    this.href = this.href + '?latitude=' + $('#latitude-input').val() + 
+                            '&longitude=' + $('#longitude-input').val()
+  });
