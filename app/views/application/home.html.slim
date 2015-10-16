@@ -7,13 +7,13 @@
       #map
     .col-md-6
       .form-group.col-md-12
-        label for="latitude-input" Latitude
+        label for="latitude-input" Latitude (-90 to 90)
         input#latitude-input.form-control type="text" placeholder="Enter a latitude"
       .form-group.col-md-12
-        label for="longitude-input" Longitude
+        label for="longitude-input" Longitude (-180 to 180)
         input#longitude-input.form-control type="text" placeholder="Enter a longitude"
       .form-group.col-md-12
-        label for="radius-input" Radius
+        label for="radius-input" Radius (1 to 5000) (meters)
         input#radius-input.form-control type="number" placeholder="Enter radius" value="1000" min="1" max="5000"
       .form-group.col-md-12
         = link_to 'Look Around',  look_around_instagram_index_path,
