@@ -8,6 +8,8 @@
     - description = news_feed['caption']['text']
   - author = news_feed['user']['username']
   - place = news_feed['location']['name']
+  - feed_location_lat = news_feed['location']['latitude']
+  - feed_location_lng = news_feed['location']['longitude']
 
   .col-sm-4
     .news-feed-card.thumbnail
@@ -18,4 +20,8 @@
         p
          i = truncate( "By: #{author}, at: #{place}", length: 40 )
         p = link_to "View", news_feed_url, class: 'btn btn-primary'
+
+    javascript:
+      init_instagram_marker(  "#{ feed_location_lat }", "#{ feed_location_lng }" )
+
 
