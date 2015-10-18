@@ -28,6 +28,7 @@
                                     
 javascript:
   var mapGlobal;
+  var infowindow;
   function initMap() {
     var myLatLng = {lat: 37.7749, lng: -122.4194};
 
@@ -36,6 +37,7 @@ javascript:
       center: myLatLng
     });
     mapGlobal = map;
+    infowindow = new google.maps.InfoWindow();
     var marker;
 
     google.maps.event.addListener(map, 'click', function(e) {
@@ -68,19 +70,26 @@ javascript:
     $('#longitude-input').val( marker_longitude );
   }
 
-  function init_instagram_marker( feed_latitude, feed_longitude ) {
+  function init_instagram_marker( feed_latitude, feed_longitude, short_info ) {
     feed_location_lat = feed_latitude;
     feed_location_lng = feed_longitude;
     feed_location = new google.maps.LatLng( feed_location_lat, feed_location_lng );
-    
-    add_marker( feed_location )
+
+    add_marker( feed_location, short_info )
   }
 
-  function add_marker( location_log ) {
-    var marker;
-    marker = new google.maps.Marker({
-        position: location_log,
-        map: mapGlobal
+  
+  function add_marker( location_log, short_info ) {
+    var news_feed_marker;
+    news_feed_marker = new google.maps.Marker({
+      position: location_log,
+      map: mapGlobal
+    });
+
+    google.maps.event.addListener(news_feed_marker, "click", function() {
+      infowindow.close();
+      infowindow.setContent( short_info );
+      infowindow.open(mapGlobal, news_feed_marker);
     });
   }
 
