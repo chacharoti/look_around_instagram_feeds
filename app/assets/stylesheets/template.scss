@@ -5,11 +5,23 @@
 }
 
 #map {
-  height: 300px;
+  height: 500px;
 }
 
 #error {
   .alert {
     display: none;
+  }
+}
+
+.news_feed_info_windown {
+  text-align: center;
+
+  i {
+    display: block;
+  }
+
+  img {
+    width: 70%;
   }
 }

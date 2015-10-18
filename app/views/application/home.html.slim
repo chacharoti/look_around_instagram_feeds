@@ -3,9 +3,9 @@
     .col-md-12
       h1 Look Around Instagram New Feeds
   .row
-    .col-md-6
+    .col-md-8
       #map
-    .col-md-6
+    .col-md-4
       .form-group.col-md-12
         label for="latitude-input" Latitude (-90 to 90)
         input#latitude-input.form-control type="text" placeholder="Enter a latitude"
@@ -34,7 +34,7 @@ javascript:
     var myLatLng = {lat: 37.7749, lng: -122.4194};
 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
+      zoom: 15,
       center: myLatLng
     });
     mapGlobal = map;
