@@ -13,3 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+
+//= require google_map
+
+//= require page/home
