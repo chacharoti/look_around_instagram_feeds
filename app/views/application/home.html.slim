@@ -29,6 +29,7 @@
 javascript:
   var mapGlobal;
   var infowindow;
+  var news_feed_markers = [];
   function initMap() {
     var myLatLng = {lat: 37.7749, lng: -122.4194};
 
@@ -91,6 +92,22 @@ javascript:
       infowindow.setContent( short_info );
       infowindow.open(mapGlobal, news_feed_marker);
     });
+    news_feed_markers.push(news_feed_marker);
+  }
+
+  function setMapOnAll(map) {
+  for (var i = 0; i < news_feed_markers.length; i++) {
+    news_feed_markers[i].setMap(map);
+    }
+  }
+
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
   }
 
   $('a#look_around').on('click', function() {
@@ -103,4 +120,5 @@ javascript:
     this.href = this.href + '?latitude=' + latitude_value + 
                             '&longitude=' + longitude_value +
                             '&radius=' + radius_value
+    deleteMarkers()
   });
