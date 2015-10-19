@@ -7,7 +7,7 @@ class Instagram
       @options = { query: { lat: latitude, 
                             lng: longitude, 
                             distance: radius,
-                            access_token: ENV['INSTAGRAM_ACCESS_TOKEN'] } }
+                            access_token:'283645197.1677ed0.6923736226ef4598b332b890f8194956' } }
     end
   end
 
